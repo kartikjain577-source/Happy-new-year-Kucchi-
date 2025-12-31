@@ -1,0 +1,196 @@
+Index.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Khushi ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  height:100vh;
+  background:linear-gradient(135deg,#ff5f9e,#ff8fb1);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  text-align:center;
+  overflow:hidden;
+}
+
+.page{
+  display:none;
+  animation:fade 1s ease;
+  padding:20px;
+}
+
+.page.active{
+  display:block;
+}
+
+h1{
+  font-size:28px;
+  margin-bottom:15px;
+}
+
+p{
+  font-size:18px;
+  margin-bottom:25px;
+  line-height:1.6;
+}
+
+button{
+  padding:12px 30px;
+  margin:10px;
+  border:none;
+  border-radius:30px;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.yes{
+  background:white;
+  color:#ff4f81;
+}
+
+.no{
+  background:transparent;
+  color:white;
+  border:2px solid white;
+}
+
+button:hover{
+  transform:scale(1.1);
+}
+
+.emoji{
+  font-size:55px;
+  margin-bottom:10px;
+  animation:float 2s infinite ease-in-out;
+}
+
+@keyframes fade{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-15px);}
+}
+
+/* Confetti */
+.confetti{
+  position:absolute;
+  top:-10px;
+  font-size:20px;
+  animation:fall linear forwards;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh);
+    opacity:0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="page active">
+  <div class="emoji">💖</div>
+  <h1>Hey Khushi 💕</h1>
+  <p>New Year se pehle ek chhota sa sawal…<br>
+  Kya main tumhara favourite insaan hoon?</p>
+  <button class="yes" onclick="nextPage()">YES</button>
+  <button class="no" onclick="nextPage()">NO</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="emoji">🥰</div>
+  <h1>Okay Khushi…</h1>
+  <p>2026 me mujhe apne saath rakhogi?</p>
+  <button class="yes" onclick="nextPage()">YES</button>
+  <button class="no" onclick="nextPage()">NO</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <div class="emoji">✨</div>
+  <h1>Soch ke bataana 💭</h1>
+  <p>Saath me hasna, thoda ladna,<br>aur saath hi grow karna chalega?</p>
+  <button class="yes" onclick="nextPage()">YES</button>
+  <button class="no" onclick="nextPage()">NO</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page">
+  <div class="emoji">🫶</div>
+  <h1>Last question, pakka wala</h1>
+  <p>Khushi, mujh par bharosa hai?<br>Aaj kal se thoda zyada?</p>
+  <button class="yes" onclick="nextPage()">YES</button>
+  <button class="no" onclick="nextPage()">NO</button>
+</div>
+
+<!-- FINAL PAGE -->
+<div class="page">
+  <div class="emoji">🎆</div>
+  <h1>Happy New Year Khushi ❤️🎉</h1>
+  <p>
+    Khushi,<br><br>
+    Ek aur saal badal gaya…<br>
+    par meri ek cheez hamesha same rahegi — <b>TU</b> 💕<br><br>
+    Thank you for being my safe place,<br>
+    meri hasi, meri shanti.<br><br>
+    2026 me bhi main wahi hoon,<br>
+    jo tumhe har din choose kare 💫<br><br>
+    <b>Happy New Year, Khushi ❤️</b>
+  </p>
+</div>
+
+<script>
+let pages = document.querySelectorAll(".page");
+let current = 0;
+
+function nextPage(){
+  pages[current].classList.remove("active");
+  current++;
+  if(current >= pages.length){
+    current = pages.length - 1;
+  }
+  pages[current].classList.add("active");
+
+  if(current === pages.length - 1){
+    startConfetti();
+  }
+}
+
+function startConfetti(){
+  for(let i=0;i<90;i++){
+    let c = document.createElement("div");
+    c.className = "confetti";
+    c.innerHTML = ["❤️","🎉","✨","💖","🥰"][Math.floor(Math.random()*5)];
+    c.style.left = Math.random()*100 + "vw";
+    c.style.animationDuration = (Math.random()*3 + 2) + "s";
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),5000);
+  }
+}
+</script>
+
+</body>
+</html>
